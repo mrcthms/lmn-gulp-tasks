@@ -49,7 +49,6 @@ module.exports = function (vinyl, plugins, options) {
     }
 
     bundler.transform(babelify.configure({
-      blacklist: ['es6.classes'],
       loose: ['es6.modules'],
       ignore: /jquery\-browserify\.js/,
       stage: 4
