@@ -16,10 +16,10 @@ module.exports = function (vinyl, plugins, options) {
       options.sourcemaps = process.env.SOURCEMAPS || true;
     }
 
-    var manifest = 'rev-manifest.json';
-    if (options.manifest) {
-      manifest = path.join(options.manifest, manifest);
-    }
+    // var manifest = 'rev-manifest.json';
+    // if (options.manifest) {
+    //   manifest = path.join(options.manifest, manifest);
+    // }
 
     var includePaths;
     if (options.includePaths === false) {
@@ -53,9 +53,9 @@ module.exports = function (vinyl, plugins, options) {
       .on('error', options.onError) // For some reason gulp-plumber doesn't like -compass
       .pipe(plugins.autoprefixer())
       .pipe(options.minify ? plugins.minifyCss() : through.obj())
-      .pipe(options.rev ? plugins.fingerprint(manifest, {
-        prefix: '/'
-      }) : through.obj())
+      // .pipe(options.rev ? plugins.fingerprint(manifest, {
+      //   prefix: '/'
+      // }) : through.obj())
       // Sourcemap end
 
       .pipe(options.sourcemaps ? plugins.sourcemaps.write('./') : through.obj())
